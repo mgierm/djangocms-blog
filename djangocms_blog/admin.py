@@ -110,7 +110,7 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
     search_fields = ("translations__title",)
     date_hierarchy = "date_published"
     raw_id_fields = ["author"]
-    frontend_editable_fields = ("title", "abstract", "post_text")
+    frontend_editable_fields = ("title", "abstract")
     enhance_exclude = ("main_image", "tags")
     actions = [
         "make_published",
@@ -148,7 +148,6 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
     """
     _fieldset_extra_fields_position = {
         "abstract": (0, 1),
-        "post_text": (0, 1),
         "sites": (1, 1, 0),
         "author": (1, 1, 0),
         "enable_liveblog": (2, 1, 2),
