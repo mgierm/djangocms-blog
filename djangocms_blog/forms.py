@@ -97,7 +97,7 @@ class PostAdminFormBase(ConfigFormBase, TranslatableModelForm):
 
     class Meta:
         model = Post
-        fields = "__all__"
+        exclude = ['post_text']
 
     @cached_property
     def available_categories(self):
