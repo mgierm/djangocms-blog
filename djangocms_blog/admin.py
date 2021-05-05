@@ -166,8 +166,6 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
     app_config_values = {"default_published": "publish"}
     _sites = None
 
-    change_form_template = 'djangocms_blog/admin/change_form.html'
-
     # Bulk actions for post admin
     def make_published(self, request, queryset):
         """
@@ -384,19 +382,11 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
         fsets = deepcopy(self._fieldsets)
         related_posts = []
         if config:
-            abstract = bool(config.use_abstract)
-            placeholder = bool(config.use_placeholder)
             related = bool(config.use_related)
         else:
-            abstract = get_setting("USE_ABSTRACT")
-            placeholder = get_setting("USE_PLACEHOLDER")
             related = get_setting("USE_RELATED")
         if related:
             related_posts = self._get_available_posts(config)
-        if abstract:
-            self._patch_fieldsets(fsets, "abstract")
-        if not placeholder:
-            self._patch_fieldsets(fsets, "post_text")
         if get_setting("MULTISITE") and not self.has_restricted_sites(request):
             self._patch_fieldsets(fsets, "sites")
         if request.user.is_superuser:
