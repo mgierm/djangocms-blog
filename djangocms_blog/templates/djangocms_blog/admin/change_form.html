@@ -1,0 +1,19 @@
+{% extends "admin/change_form.html" %}
+{% load admin_urls %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static "djangocms_blog/js/medium-editor.min.js" %}"></script>
+{% endblock %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "djangocms_text_mediumeditor/css/medium-editor.min.css" %}" />
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script type="text/javascript">
+        new MediumEditor("#id_abstract")();
+    </script>
+{% endblock js %}

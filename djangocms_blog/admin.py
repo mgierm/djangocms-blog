@@ -166,6 +166,8 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
     app_config_values = {"default_published": "publish"}
     _sites = None
 
+    change_form_template = 'djangocms_blog/admin/change_form.html'
+
     # Bulk actions for post admin
     def make_published(self, request, queryset):
         """
