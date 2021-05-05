@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="{% static "djangocms_text_mediumeditor/css/medium-editor.min.css" %}" />
 {% endblock %}
 
-{% block js %}
-    {{ block.super }}
-    <script type="text/javascript">
-        new MediumEditor("#id_abstract")();
-    </script>
-{% endblock js %}
+<script type="text/javascript">
+    new MediumEditor("#id_abstract")();
+</script>
