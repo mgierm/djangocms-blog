@@ -126,6 +126,13 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
         # left empty for sites, author and related fields
         (None, {"fields": [[]]}),
         (
+            _("RAW post content"),
+            {
+                "fields": ["post_text"],
+                "classes": ("collapse",),
+            },
+        ),
+        (
             _("Info"),
             {
                 "fields": ["tags", ["date_published", "date_published_end", "date_featured"], ["enable_comments"]],
