@@ -416,6 +416,7 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
             self._patch_fieldsets(fsets, "related")
         if callable(filter_function):
             fsets = filter_function(fsets, request, obj=obj)
+        self._patch_fieldsets(fsets, "categories")
         return fsets
 
     def _patch_fieldsets(self, fsets, field):
