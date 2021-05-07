@@ -161,8 +161,8 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
     position matches.
     """
     _fieldset_extra_fields_position = {
-        "abstract": (0, 1, 0),
-        "categories": (0, 1, 0),
+        "abstract": (0, 1),
+        "categories": (0, 1),
         "sites": (1, 1, 0),
         "author": (1, 1, 0),
         "enable_liveblog": (2, 1, 2),
