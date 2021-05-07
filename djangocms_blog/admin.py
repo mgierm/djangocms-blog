@@ -123,6 +123,7 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
         actions += ["enable_liveblog", "disable_liveblog"]
     _fieldsets = [
         (None, {"fields": ["title", "subtitle", "slug", "publish"]}),
+        (None, {"fields": [["abstract", "categories"]]}),
         # left empty for sites, author and related fields
         (None, {"fields": [[]]}),
         (
@@ -162,7 +163,6 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
     """
     _fieldset_extra_fields_position = {
         "abstract": (0, 1),
-        "categories": (0, 1),
         "sites": (1, 1, 0),
         "author": (1, 1, 0),
         "enable_liveblog": (2, 1, 2),
@@ -416,7 +416,6 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
             self._patch_fieldsets(fsets, "related")
         if callable(filter_function):
             fsets = filter_function(fsets, request, obj=obj)
-        self._patch_fieldsets(fsets, "categories")
         return fsets
 
     def _patch_fieldsets(self, fsets, field):
