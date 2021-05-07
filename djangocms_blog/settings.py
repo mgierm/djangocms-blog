@@ -589,14 +589,14 @@ BLOG_WIZARD_CONTENT_PLUGIN_BODY = "body"
 Name of the plugin field to add wizard text.
 """
 
+BLOG_PUBLISH_CHECKBOX_HELPTEXT = _('Check this box to make this post publicly visible. Otherwise you can publish it later.')
+BLOG_ABSTRACT_HELPTEXT = _('A brief summary of the post.')
+
 params = {param: value for param, value in locals().items() if param.startswith("BLOG_")}
 
 """
 .. _django-meta settings: https://github.com/nephila/django-meta#settings
 """
-
-BLOG_PUBLISH_CHECKBOX_HELPTEXT = _('Check this box to make this post publicly visible. Otherwise you can publish it later.')
-BLOG_ABSTRACT_HELPTEXT = _('A brief summary of the post.')
 
 
 def get_setting(name):
