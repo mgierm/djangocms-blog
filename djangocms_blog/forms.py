@@ -97,7 +97,7 @@ class PostAdminFormBase(ConfigFormBase, TranslatableModelForm):
 
     class Meta:
         model = Post
-        fields = "__all__"
+        exclude = ['sites']
         help_texts = {
             'publish': get_setting("PUBLISH_CHECKBOX_HELPTEXT"),
             'abstract': get_setting("ABSTRACT_HELPTEXT"),
