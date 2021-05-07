@@ -123,9 +123,9 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
         actions += ["enable_liveblog", "disable_liveblog"]
     _fieldsets = [
         (None, {"fields": ["title", "subtitle", "slug", "publish"]}),
-        (None, {"fields": [["abstract", "categories"]]}),
         # left empty for sites, author and related fields
         (None, {"fields": [[]]}),
+        (None, {"fields": [["abstract", "categories"]]}),
         (
             _("RAW post content"),
             {
@@ -396,15 +396,11 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
         fsets = deepcopy(self._fieldsets)
         related_posts = []
         if config:
-            abstract = bool(config.use_abstract)
             related = bool(config.use_related)
         else:
-            abstract = get_setting("USE_ABSTRACT")
             related = get_setting("USE_RELATED")
         if related:
             related_posts = self._get_available_posts(config)
-        if abstract:
-            self._patch_fieldsets(fsets, "abstract")
         if get_setting("MULTISITE") and not self.has_restricted_sites(request):
             self._patch_fieldsets(fsets, "sites")
         if request.user.is_superuser:
