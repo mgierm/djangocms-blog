@@ -122,7 +122,7 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
     if apps.is_installed("djangocms_blog.liveblog"):
         actions += ["enable_liveblog", "disable_liveblog"]
     _fieldsets = [
-        (None, {"fields": ["title", "subtitle", "slug", "publish", ["categories", "app_config"]]}),
+        (None, {"fields": ["title", "subtitle", "slug", "publish"]}),
         # left empty for sites, author and related fields
         (None, {"fields": [[]]}),
         (
@@ -144,6 +144,13 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
             {"fields": [["main_image", "main_image_thumbnail", "main_image_full"]], "classes": ("collapse",)},
         ),
         (_("SEO"), {"fields": [["meta_description", "meta_title", "meta_keywords"]], "classes": ("collapse",)}),
+        (
+            _("Additional config"),
+            {
+                "fields": ["app_config"],
+                "classes": ("collapse",),
+            },
+        ),
     ]
     """
     Default fieldsets structure.
@@ -154,7 +161,8 @@ class PostAdmin(PlaceholderAdminMixin, FrontendEditableAdminMixin, ModelAppHookC
     position matches.
     """
     _fieldset_extra_fields_position = {
-        "abstract": (0, 1),
+        "abstract": (0, 1, 0),
+        "categories": (0, 1, 0),
         "sites": (1, 1, 0),
         "author": (1, 1, 0),
         "enable_liveblog": (2, 1, 2),
